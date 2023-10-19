@@ -1,7 +1,7 @@
 # Anchor-Free-Object-Detection-with-FCOS
  ## Introduction
 
- I have implemented a former State of Art Anchor Free single-stage object detector based on **FCOS (Fully-Convolutional One-Stage Object Detection)** https://arxiv.org/abs/1904.01355v5. The goal of this project is to detect specific object classes. My detector closely follows the FCOS design, but I made some adjustments to create a smaller model with different hyperparameters. I had to do this because I'm working with limited AWS resources. We train our network on **Pascal VOC dataset ** http://host.robots.ox.ac.uk/pascal/VOC/
+A pytorch Implementation of a former State of Art Anchor Free single-stage object detector based on **FCOS (Fully-Convolutional One-Stage Object Detection)** https://arxiv.org/abs/1904.01355v5. Defining Anchor or prior boxes is often a difficult hyperparamter to define for object detection tasks. The goal of this project is to detect specific object classes given an image in a Anchor-Less Approach. My detector closely follows the FCOS design, but I made some adjustments to create a smaller model with different hyperparameters. I had to do this because I'm working with limited AWS resources. We train our network on **Pascal VOC dataset ** http://host.robots.ox.ac.uk/pascal/VOC/ 
 
 ![Alt text](assets/FCOS.png)
 We Implement **Feature Pyramid Networks for Object Detection** (https://arxiv.org/abs/1612.03144) from scratch and use that as the Neck for our Object Detector. We also implement a custom Prediction Head to work with this Network, along with Various Losses detailed as follows:
