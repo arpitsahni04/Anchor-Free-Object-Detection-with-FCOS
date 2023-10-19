@@ -50,3 +50,7 @@ python3 train.py --inference
  ![Alt text](assets/image-7.png)
  ![Alt text](assets/image-8.png)
  ![Alt text](assets/image-9.png)
+
+ ## t-sne
+ We plot T-sne (https://en.wikipedia.org/wiki/T-distributed_stochastic_neighbor_embedding) to visualize the feature space of the network right before the heading in a low dimensional 2D space. This helps us asses if the features where discriminative or if we need to incorporate a constrastive learning based strategy inorder to obtain more discriminative feature maps
+ ![Alt text](assets/tsne.png)
