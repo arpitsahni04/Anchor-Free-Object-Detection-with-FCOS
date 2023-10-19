@@ -15,26 +15,18 @@ class ResNet(nn.Module):
 
         self.resnet = torchvision.models.resnet18(weights='IMAGENET1K_V1')
 
-        ##################################################################
-        # TODO: Define a FC layer here to process the features
-        ##################################################################
+
         num_features = self.resnet.fc.in_features 
         self.resnet.fc = nn.Linear(num_features , num_classes)
-        ##################################################################
-        #                          END OF YOUR CODE                      #
-        ##################################################################
+
         
 
     def forward(self, x):
         
-        ##################################################################
-        # TODO: Return unnormalized log-probabilities here
-        ##################################################################
+
         x = self.resnet(x)
         return x
-        ##################################################################
-        #                          END OF YOUR CODE                      #
-        ##################################################################
+
 
 
 if __name__ == "__main__":
@@ -42,13 +34,7 @@ if __name__ == "__main__":
     torch.manual_seed(0)
     random.seed(0)
 
-    ##################################################################
-    # TODO: Create hyperparameter argument class
-    # We will use a size of 224x224 for the rest of the questions. 
-    # Note that you might have to change the augmentations
-    # You should experiment and choose the correct hyperparameters
-    # You should get a map of around 50 in 50 epochs
-    ##################################################################
+
     args = ARGS(
         epochs= 50,
         inp_size=224,
@@ -59,23 +45,12 @@ if __name__ == "__main__":
         step_size= 15, #TODO,
         gamma= 0.1#TODO
     )
-    ##################################################################
-    #                          END OF YOUR CODE                      #
-    ##################################################################
+
     
     print(args)
 
-    ##################################################################
-    # TODO: Define a ResNet-18 model (https://arxiv.org/pdf/1512.03385.pdf) 
-    # Initialize this model with ImageNet pre-trained weights
-    # (except the last layer). You are free to use torchvision.models 
-    ##################################################################
 
     model = ResNet(len(VOCDataset.CLASS_NAMES)).to(args.device)
-
-    ##################################################################
-    #                          END OF YOUR CODE                      #
-    ##################################################################
 
     # initializes Adam optimizer and simple StepLR scheduler
     optimizer = torch.optim.Adam(model.parameters(), lr=args.lr)

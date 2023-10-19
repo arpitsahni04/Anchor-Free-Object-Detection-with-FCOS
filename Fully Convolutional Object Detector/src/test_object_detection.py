@@ -8,13 +8,6 @@ from one_stage_detector import *
 from utils.grad import rel_error
 
 """
-This file provides tests for several of the functions you will be implementing. 
-As a reminder, this file is not completely exhaustive, and passing all these tests
-will not necessarily guarantee that everything is correct. You may need to debug
-issues with visualization, or even writing your own tests. In other words, 
-passing these tests is necessary, but not necessarily sufficient for a correct
-implementation.
-
 Run the test suite with : 
     python3 -m test_object_detection
 """

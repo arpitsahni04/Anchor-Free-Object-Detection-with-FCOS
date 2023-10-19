@@ -1,5 +1,5 @@
 """
-You will use this script to train your object detection model.
+
 
 Arguments:
 --overfit: This argument is default on, and will run training on a small

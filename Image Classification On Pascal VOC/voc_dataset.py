@@ -56,15 +56,6 @@ class VOCDataset(Dataset):
             fpath = os.path.join(self.ann_dir, index + '.xml')
             tree = ET.parse(fpath)
             
-            #######################################################################
-            # TODO: Insert your code here to preload labels
-            # Hint: the folder Annotations contains .xml files with class labels
-            # for objects in the image. The `tree` variable contains the .xml
-            # information in an easy-to-access format (it might be useful to read
-            # https://docs.python.org/3/library/xml.etree.elementtree.html)
-            # Loop through the `tree` to find all objects in the image
-            #######################################################################
-
             #  The class vector should be a 20-dimensional vector with class[i] = 1 if an object of class i is present in the image and 0 otherwise
             class_vec = torch.zeros(20)
 
@@ -83,35 +74,20 @@ class VOCDataset(Dataset):
                 
             
 
-            ######################################################################
-            #                            END OF YOUR CODE                        #
-            ######################################################################
 
             label_list.append((class_vec, weight_vec))
 
         return label_list
 
     def get_random_augmentations(self):
-        ######################################################################
-        # TODO: Return a list of random data augmentation transforms here
-        # NOTE: make sure to not augment during test and replace random crops
-        # with center crops. Hint: There are lots of possible data
-        # augmentations. Some commonly used ones are random crops, flipping,
-        # and rotation. You are encouraged to read the docs, which is found
-        # at https://pytorch.org/vision/stable/transforms.html
-        # Depending on the augmentation you use, your final image size will
-        # change and you will have to write the correct value of `flat_dim`
-        # in line 46 in simple_cnn.py
-        ######################################################################
+
         if self.split=='test':
             transform = [transforms.CenterCrop(self.size)]
         else:
             transform = [transforms.RandomResizedCrop(self.size), 
                          transforms.RandomHorizontalFlip(p=0.5),
                           transforms.RandomRotation((-10, 10))]
-        ######################################################################
-        #                            END OF YOUR CODE                        #
-        ######################################################################
+
         return transform
 
     def __getitem__(self, index):

@@ -46,24 +46,9 @@ def train(args, model, optimizer, scheduler=None, model_name='model'):
             optimizer.zero_grad()
             output = model(data)
 
-            ##################################################################
-            # TODO: Implement a suitable loss function for multi-label
-            # classification. You are NOT allowed to use any pytorch built-in
-            # functions. Remember to take care of underflows / overflows.
-            # Function Inputs:
-            #   - `output`: Outputs from the network
-            #   - `target`: Ground truth labels, refer to voc_dataset.py
-            #   - `wgt`: Weights (difficult or not), refer to voc_dataset.py
-            # Function Outputs:
-            #   - `output`: Computed loss, a single floating point number
-            ##################################################################
             output = torch.exp(output - logsumexp(output)) 
             loss = torch.sum(-wgt * (target * torch.log(EPSILON + output) + (1 - target) * torch.log(EPSILON+ 1 - output)))
-            # crit = torch.nn.BCEWithLogitsLoss(weight=wgt)
-            # loss = crit(output, target)
-            ##################################################################
-            #                          END OF YOUR CODE                      #
-            ##################################################################
+
             
             loss.backward()
             

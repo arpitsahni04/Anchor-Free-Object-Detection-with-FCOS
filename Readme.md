@@ -26,6 +26,13 @@ $ conda create --name myenv python=3.7
 $ pip install -r requirements.txt
 ```
 ---
+## Dataset
+download the Pascal VOC 2007 Dataset using the following commands and bash script.
+```
+$ chmod +x Image Classification On Pascal VOC\download_data.sh
+$ cd Image Classification On Pascal VOC
+$ .\download_data.sh
+```
 
 ## Training 
 ```
@@ -51,6 +58,11 @@ python3 train.py --inference
  ![Alt text](assets/image-8.png)
  ![Alt text](assets/image-9.png)
 
- ## t-sne
+ ## t-distributed stochastic neighbor embedding
+
+ t-distributed stochastic neighbor embedding (t-SNE) is a statistical method for visualizing high-dimensional data by giving each datapoint a location in a two or three-dimensional map. It is based on Stochastic Neighbor Embedding originally developed by Sam Roweis and Geoffrey Hinton,where Laurens van der Maaten proposed the t-distributed variant.It is a nonlinear dimensionality reduction technique for embedding high-dimensional data for visualization in a low-dimensional space of two or three dimensions. Specifically, it models each high-dimensional object by a two- or three-dimensional point in such a way that similar objects are modeled by nearby points and dissimilar objects are modeled by distant points with high probability.
+
  We plot T-sne (https://en.wikipedia.org/wiki/T-distributed_stochastic_neighbor_embedding) to visualize the feature space of the network right before the heading in a low dimensional 2D space. This helps us asses if the features where discriminative or if we need to incorporate a constrastive learning based strategy inorder to obtain more discriminative feature maps
+
+
  ![Alt text](assets/tsne.png)
